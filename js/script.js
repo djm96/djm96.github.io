@@ -1,12 +1,16 @@
 $(document).ready(function(){
-	 
-	$.post("./process.php",{
+	$.ajax({
+            method: "POST",
+            url: "./process.php",
+            data:{
 		action: 'get_sessionID',
 		session_id : $("#session_id").val(),
-		}, function(response){
-			var data = JSON.parse(response);
+		}
+          }).done(function(response) {
+            var data = JSON.parse(response);
 			$("#session_id").val(data.session_id);
-		});	
+          });
+ 
 	/*------------------------*/
 
 });
